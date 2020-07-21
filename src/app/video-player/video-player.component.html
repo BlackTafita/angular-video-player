@@ -8,9 +8,9 @@
     <div class="play" *ngIf="!playState"
             (click)="play()"
     ></div>
-    <button class="pause" *ngIf="playState"
+    <div class="pause" *ngIf="playState"
             (click)="pause()"
-    >Pause</button>
+    ></div>
     <span class="player-toolbar__duration">{{currentTime$ | async}} : {{videoDuration$ | async}}</span>
   </div>
 </div>
