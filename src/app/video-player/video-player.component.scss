@@ -1,0 +1,36 @@
+:host {
+  width: 100%;
+}
+
+.player {
+  width: 100%;
+  position: relative;
+
+  &-media {
+    width: 100%;
+
+    video {
+      width: 100%
+    }
+  }
+
+  &-toolbar {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+    background-color: #333333;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .play {
+      width: 0;
+      height: 0;
+      border-top: 1em solid transparent;
+      border-bottom: 1em solid transparent;
+      border-left: 1em solid white;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div class="player">
+  <div class="player-media">
+    <video #video>
+      <source [src]="videoSource">
+    </video>
+  </div>
+  <div class="player-toolbar">
+    <div class="play" *ngIf="!playState"
+            (click)="play()"
+    ></div>
+    <button class="pause" *ngIf="playState"
+            (click)="pause()"
+    >Pause</button>
+    <span class="player-toolbar__duration">{{currentTime$ | async}} : {{videoDuration$ | async}}</span>
+  </div>
+</div>
