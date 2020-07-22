@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
+import { combineLatest, fromEvent, Observable } from 'rxjs';
 import { map, } from 'rxjs/operators';
 
 @Component({
@@ -15,6 +15,7 @@ export class VideoPlayerComponent implements AfterViewInit {
 
   videoDuration$: Observable<number>;
   currentTime$: Observable<number>;
+  timeline$: Observable<string>;
 
   playState = false;
 
@@ -35,6 +36,13 @@ export class VideoPlayerComponent implements AfterViewInit {
     .pipe(
       map(() => this.videoElem !== null ? Number(this.videoElem.currentTime.toFixed(0)) : 0),
     );
+
+    this.timeline$ = combineLatest(this.currentTime$, this.videoDuration$)
+      .pipe(
+        map(([current, full]) => {
+          return ((full / 100) * current).toFixed(2) + '%';
+        })
+      );
   }
 
   play() {

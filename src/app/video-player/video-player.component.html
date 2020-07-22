@@ -5,14 +5,21 @@
     </video>
   </div>
   <div class="player-toolbar">
-    <div class="play" *ngIf="!playState"
-            (click)="play()"
-    ></div>
-    <div class="pause" *ngIf="playState"
-            (click)="pause()"
-    ></div>
-    <div class="stop" (click)="stop()">
+    <div class="player-timeline">
+      <div class="finished-line"
+           [ngStyle]="{'width': (timeline$ | async)}"
+      ></div>
     </div>
-    <span class="player-toolbar__duration">{{currentTime$ | async}} : {{videoDuration$ | async}}</span>
+    <div class="buttons-line">
+      <div class="play" *ngIf="!playState"
+           (click)="play()"
+      ></div>
+      <div class="pause" *ngIf="playState"
+           (click)="pause()"
+      ></div>
+      <div class="stop" (click)="stop()">
+      </div>
+      <span class="player-toolbar__duration">{{currentTime$ | async}} : {{videoDuration$ | async}}</span>
+    </div>
   </div>
 </div>
