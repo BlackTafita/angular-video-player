@@ -11,6 +11,8 @@
     <div class="pause" *ngIf="playState"
             (click)="pause()"
     ></div>
+    <div class="stop" (click)="stop()">
+    </div>
     <span class="player-toolbar__duration">{{currentTime$ | async}} : {{videoDuration$ | async}}</span>
   </div>
 </div>

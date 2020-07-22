@@ -22,7 +22,7 @@
     background-color: rgba(51, 51, 51, 0.69);
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     .play {
@@ -31,12 +31,14 @@
       border-top: 0.6em solid transparent;
       border-bottom: 0.6em solid transparent;
       border-left: 1em solid white;
+      margin-right: 1em;
     }
 
     .pause {
       width: 0.3em;
       height: 1em;
       background: white;
+      margin-right: 1.5em;
       &:after {
         content: '';
         display: block;
@@ -45,6 +47,13 @@
         background: white;
         margin-left: 0.5em;
       }
+    }
+
+    .stop {
+      width: 1.2em;
+      height: 1.2em;
+      background: white;
+      margin-right: 1em;
     }
   }
 }

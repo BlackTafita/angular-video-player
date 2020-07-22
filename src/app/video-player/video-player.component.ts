@@ -47,4 +47,10 @@ export class VideoPlayerComponent implements AfterViewInit {
     this.playState = false;
   }
 
+  stop() {
+    this.videoElem.pause();
+    this.videoElem.currentTime = 0;
+    this.playState = false;
+  }
+
 }
