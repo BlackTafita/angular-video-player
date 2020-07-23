@@ -1,7 +1,7 @@
 <div class="player">
   <div class="player-media">
     <video #video>
-      <source [src]="videoSource">
+      <source [src]="videoSrc">
     </video>
   </div>
   <div class="player-toolbar">
@@ -19,7 +19,7 @@
       ></div>
       <div class="stop" (click)="stop()">
       </div>
-      <span class="player-toolbar__duration">{{currentTime$ | async}} : {{videoDuration$ | async}}</span>
+      <span class="player-toolbar__duration">{{currentTime$ | async | date: 'mm:ss'}} : {{videoDuration$ | async | date: 'mm:ss'}}</span>
     </div>
   </div>
 </div>

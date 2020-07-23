@@ -1,18 +1,20 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { combineLatest, fromEvent, merge, Observable, Subject } from 'rxjs';
-import { map, tap, } from 'rxjs/operators';
+import { map, } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-video-player',
+  selector: 'ng-video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss']
 })
 export class VideoPlayerComponent implements AfterViewInit {
 
+  @Input()
+  videoSrc: string;
+
   @ViewChild('video', {static: false}) video: ElementRef;
   @ViewChild('timeline', {static: false}) timelineEl: ElementRef;
 
-  videoSource = 'assets/video/1.mov';
   playState = false;
 
   videoDuration$: Observable<number>;
