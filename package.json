@@ -1,6 +1,7 @@
 {
   "name": "ng-video-player",
-  "version": "1.0.2",
+  "version": "1.0.4",
+  "keywords": ["angular", "video", "player"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

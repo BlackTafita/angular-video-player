@@ -32,11 +32,13 @@ export class VideoPlayerComponent implements AfterViewInit {
     this.videoDuration$ = fromEvent(this.videoElem, 'loadedmetadata')
     .pipe(
       map(() => this.videoElem !== null ? Number(this.videoElem.duration.toFixed(0)) : 0),
+      map(res => new Date(null).setSeconds(res))
     );
 
     this.currentTime$ = fromEvent(this.videoElem, 'timeupdate')
     .pipe(
       map(() => this.videoElem !== null ? Number(this.videoElem.currentTime.toFixed(0)) : 0),
+      map(res => new Date(null).setSeconds(res))
     );
 
 
