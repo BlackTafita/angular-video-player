@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { VideoPlayerModule } from './video-player/video-player.module';
+import { NgVideoPlayerModule } from './video-player/video-player.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { VideoPlayerModule } from './video-player/video-player.module';
   ],
   imports: [
     BrowserModule,
-    VideoPlayerModule,
+    NgVideoPlayerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

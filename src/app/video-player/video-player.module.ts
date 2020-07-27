@@ -10,6 +10,6 @@ import { CommonModule } from '@angular/common';
   exports: [VideoPlayerComponent],
 })
 
-export class VideoPlayerModule {
+export class NgVideoPlayerModule {
 
 }

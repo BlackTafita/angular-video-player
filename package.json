@@ -1,6 +1,6 @@
 {
   "name": "ng-video-player",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,8 +11,7 @@
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
-  "dependencies": {},
-  "peerDependencies": {
+  "dependencies": {
     "@angular/compiler": "~8.2.14",
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
@@ -21,7 +20,9 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@angular/core": "~8.2.14",
-    "rxjs": "~6.4.0",
+    "rxjs": "~6.4.0"
+  },
+  "peerDependencies": {
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
