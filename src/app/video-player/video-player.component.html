@@ -12,18 +12,48 @@
     </div>
     <div class="buttons-line">
       <div class="side left-side">
-        <div class="play" *ngIf="!playState"
-             (click)="play()"
-        ></div>
-        <div class="pause" *ngIf="playState"
-             (click)="pause()"
-        ></div>
-        <div class="stop" (click)="stop()">
+        <div class="btn btn-play" *ngIf="!playState"
+             (click)="play()">
+          <svg version="1.1" id="Слой_1"  x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+            <g>
+              <path d="M4.88,23.23L21.72,12L4.88,0.77V23.23z M7.16,5.02L17.62,12L7.16,18.98V5.02z M7.16,5.02"/>
+            </g>
+          </svg>
+        </div>
+        <div class="btn btn-pause" *ngIf="playState"
+             (click)="pause()">
+          <svg version="1.1" id="Слой_1" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+            <g>
+              <path d="M2.15,22.1h8.45V2.39H2.15V22.1z M4.96,5.21h2.82v14.08H4.96V5.21z M4.96,5.21"/>
+              <path d="M13.41,22.1h8.45V2.39h-8.45V22.1z M16.22,5.21h2.82v14.08h-2.82V5.21z M16.22,5.21"/>
+            </g>
+          </svg>
+        </div>
+        <div class="btn btn-stop" (click)="stop()">
+          <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+            <g>
+              <path d="M10.06,3.46H2.3v18.11h7.76v-7.44l11.64,8.73V2.17L10.06,10.9V3.46z M19.11,7.34v10.35l-6.9-5.17L19.11,7.34z M7.47,18.98
+                H4.89V6.05h2.59V18.98z M7.47,18.98"/>
+            </g>
+          </svg>
         </div>
         <span class="player-toolbar__duration">{{currentTime$ | async | date: 'mm:ss'}} : {{videoDuration$ | async | date: 'mm:ss'}}</span>
       </div>
       <div class="side right-side">
-        <div class="fullscreen" (click)="toFullScreen()"></div>
+        <div class="btn btn-fullscreen" (click)="toFullScreen()">
+          <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+              <g>
+                <path d="M15.53,4.25h4.51v4.51h2.25V2h-6.76V4.25z M15.53,4.25"/>
+                <path d="M20.04,20.03h-4.51v2.25h6.76v-6.76h-2.25V20.03z M20.04,20.03"/>
+                <path d="M4.26,15.52H2.01v6.76h6.76v-2.25H4.26V15.52z M4.26,15.52"/>
+                <path d="M2.01,8.76h2.25V4.25h4.51V2H2.01V8.76z M2.01,8.76"/>
+              </g>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
