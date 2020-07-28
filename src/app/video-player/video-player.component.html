@@ -4,7 +4,7 @@
       <source [src]="videoSrc">
     </video>
   </div>
-  <div class="player-toolbar">
+  <div class="player-toolbar" *ngIf="showToolbar">
     <div class="player-timeline" #timeline (click)="timelineChange($event)">
       <div class="finished-line"
            [ngStyle]="{'width': (timeline$ | async)}"
