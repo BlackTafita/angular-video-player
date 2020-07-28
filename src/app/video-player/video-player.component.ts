@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { combineLatest, fromEvent, merge, Observable, Subject } from 'rxjs';
 import { map, } from 'rxjs/operators';
-import { PlayerOptionsInterface } from './interfaces/player-options.interface';
 
 @Component({
   selector: 'ng-video-player',
