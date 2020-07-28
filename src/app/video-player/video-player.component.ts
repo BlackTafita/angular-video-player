@@ -84,4 +84,11 @@ export class VideoPlayerComponent implements AfterViewInit {
     this.timelineChangeSub$.next(event);
   }
 
+  toFullScreen() {
+    const elem = this.video.nativeElement as HTMLVideoElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    }
+  }
+
 }
