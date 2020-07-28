@@ -45,16 +45,16 @@ export class VideoPlayerComponent implements AfterViewInit {
     const timelineDuration$ = combineLatest(this.currentTime$, this.videoDuration$)
       .pipe(
         map(([current, full]) => {
-          return (current / (full / 100)).toFixed(2);
+          return (current / (full / 100));
         })
       );
 
     const timelineChange$ = this.timelineChangeSub$
       .pipe(
         map((event: any) => {
-          const percent = (event.clientX / (this.timelineEl.nativeElement.getBoundingClientRect().right / 100));
+          const percent = (event.offsetX / (this.timelineEl.nativeElement.offsetWidth / 100));
           this.videoElem.currentTime = Number(((this.videoElem.duration / 100) * percent).toFixed(0));
-          return percent.toFixed(2);
+          return percent;
         }),
       );
 
