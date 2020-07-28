@@ -11,15 +11,20 @@
       ></div>
     </div>
     <div class="buttons-line">
-      <div class="play" *ngIf="!playState"
-           (click)="play()"
-      ></div>
-      <div class="pause" *ngIf="playState"
-           (click)="pause()"
-      ></div>
-      <div class="stop" (click)="stop()">
+      <div class="side left-side">
+        <div class="play" *ngIf="!playState"
+             (click)="play()"
+        ></div>
+        <div class="pause" *ngIf="playState"
+             (click)="pause()"
+        ></div>
+        <div class="stop" (click)="stop()">
+        </div>
+        <span class="player-toolbar__duration">{{currentTime$ | async | date: 'mm:ss'}} : {{videoDuration$ | async | date: 'mm:ss'}}</span>
       </div>
-      <span class="player-toolbar__duration">{{currentTime$ | async | date: 'mm:ss'}} : {{videoDuration$ | async | date: 'mm:ss'}}</span>
+      <div class="side right-side">
+        <div class="fullscreen" (click)="toFullScreen()"></div>
+      </div>
     </div>
   </div>
 </div>
