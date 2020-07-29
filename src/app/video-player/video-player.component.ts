@@ -19,6 +19,8 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('video', {static: false}) video: ElementRef;
   @ViewChild('timeline', {static: false}) timelineEl: ElementRef;
 
+  title: string;
+
   videoDuration$: Observable<number>;
   currentTime$: Observable<number>;
   timeline$: Observable<string>;
@@ -34,6 +36,7 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.videoElem.load();
+    this.title = this.videoSrc.match(/^.*\/(.*)\./)[1];
     this.initVideoStreams();
   }
 
