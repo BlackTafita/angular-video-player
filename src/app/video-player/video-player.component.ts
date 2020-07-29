@@ -55,6 +55,14 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
     this.playState = false;
   }
 
+  toggle() {
+    if (this.videoElem.paused) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  }
+
   stop() {
     this.videoElem.pause();
     this.videoElem.currentTime = 0;

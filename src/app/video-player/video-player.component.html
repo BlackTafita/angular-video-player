@@ -1,6 +1,6 @@
 <div class="player">
   <div class="player-media">
-    <video #video>
+    <video #video  (click)="toggle()">
       <source [src]="videoSrc">
     </video>
   </div>
