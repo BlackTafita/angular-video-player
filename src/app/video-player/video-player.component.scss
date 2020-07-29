@@ -32,6 +32,10 @@
     background-color: rgba(51, 51, 51, 0.69);
     color: white;
 
+    &__duration {
+      margin-right: 1em;
+    }
+
     .buttons-line {
       width: calc(100% - 1.4em);
       padding: 0.7em;
