@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { combineLatest, fromEvent, merge, Observable, Subject } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import { combineLatest, fromEvent, merge, Observable, Subject, Subscription } from 'rxjs';
 import { map, } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'ng-video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss']
 })
-export class VideoPlayerComponent implements AfterViewInit {
+export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
 
   @Input()
   videoSrc: string;
@@ -25,13 +26,58 @@ export class VideoPlayerComponent implements AfterViewInit {
   timeline$: Observable<string>;
   timelineChangeSub$: Subject<Event> = new Subject<Event>();
 
+  volumeChangeSub$: Subscription;
+
+  volumeControl: FormControl = new FormControl(75);
+
   get videoElem() {
     return (this.video ? this.video.nativeElement : null) as HTMLVideoElement;
   }
 
   ngAfterViewInit() {
     this.videoElem.load();
+    this.initVideoStreams();
+  }
 
+  ngOnDestroy() {
+    if (this.volumeChangeSub$ && this.volumeChangeSub$.unsubscribe) {
+      this.volumeChangeSub$.unsubscribe();
+    }
+  }
+
+  play() {
+    this.videoElem.play();
+  }
+
+  pause() {
+    this.videoElem.pause();
+  }
+
+  toggle() {
+    if (this.videoElem.paused) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  }
+
+  stop() {
+    this.videoElem.pause();
+    this.videoElem.currentTime = 0;
+  }
+
+  timelineChange(event: Event) {
+    this.timelineChangeSub$.next(event);
+  }
+
+  toFullScreen() {
+    const elem = this.video.nativeElement as HTMLVideoElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    }
+  }
+
+  initVideoStreams() {
     this.videoDuration$ = fromEvent(this.videoElem, 'loadedmetadata')
     .pipe(
       map(() => this.videoElem !== null ? Number(this.videoElem.duration.toFixed(0)) : 0),
@@ -44,54 +90,28 @@ export class VideoPlayerComponent implements AfterViewInit {
       map(res => new Date(null).setSeconds(res))
     );
 
-
     const timelineDuration$ = combineLatest(this.currentTime$, this.videoDuration$)
-      .pipe(
-        map(([current, full]) => {
-          return (current / (full / 100));
-        })
-      );
+    .pipe(
+      map(([current, full]) => {
+        return (current / (full / 100));
+      })
+    );
 
     const timelineChange$ = this.timelineChangeSub$
-      .pipe(
-        map((event: any) => {
-          const percent = (event.offsetX / (this.timelineEl.nativeElement.offsetWidth / 100));
-          this.videoElem.currentTime = Number(((this.videoElem.duration / 100) * percent).toFixed(0));
-          return percent;
-        }),
-      );
+    .pipe(
+      map((event: any) => {
+        const percent = (event.offsetX / (this.timelineEl.nativeElement.offsetWidth / 100));
+        this.videoElem.currentTime = Number(((this.videoElem.duration / 100) * percent).toFixed(0));
+        return percent;
+      }),
+    );
 
     this.timeline$ = merge(timelineDuration$, timelineChange$)
-      .pipe(
-        map(val => val + '%')
-      );
-  }
+    .pipe(
+      map(val => val + '%')
+    );
 
-  play() {
-    this.videoElem.play();
-    this.playState = true;
-  }
-
-  pause() {
-    this.videoElem.pause();
-    this.playState = false;
-  }
-
-  stop() {
-    this.videoElem.pause();
-    this.videoElem.currentTime = 0;
-    this.playState = false;
-  }
-
-  timelineChange(event: Event) {
-    this.timelineChangeSub$.next(event);
-  }
-
-  toFullScreen() {
-    const elem = this.video.nativeElement as HTMLVideoElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    }
+    this.volumeChangeSub$ = this.volumeControl.valueChanges.subscribe((res) => this.videoElem.volume = res / 100);
   }
 
 }
