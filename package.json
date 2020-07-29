@@ -1,6 +1,7 @@
 {
   "name": "ng-video-player",
   "version": "1.0.8",
+  "license": "MIT",
   "keywords": [
     "angular", "video", "player"],
   "scripts": {
