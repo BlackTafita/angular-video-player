@@ -19,8 +19,6 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('video', {static: false}) video: ElementRef;
   @ViewChild('timeline', {static: false}) timelineEl: ElementRef;
 
-  playState = false;
-
   videoDuration$: Observable<number>;
   currentTime$: Observable<number>;
   timeline$: Observable<string>;
