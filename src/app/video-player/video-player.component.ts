@@ -47,12 +47,10 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
 
   play() {
     this.videoElem.play();
-    this.playState = true;
   }
 
   pause() {
     this.videoElem.pause();
-    this.playState = false;
   }
 
   toggle() {
@@ -66,7 +64,6 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   stop() {
     this.videoElem.pause();
     this.videoElem.currentTime = 0;
-    this.playState = false;
   }
 
   timelineChange(event: Event) {
