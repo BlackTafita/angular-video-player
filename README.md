@@ -1,7 +1,7 @@
 # NgVideoPlayer
-[![Generic badge](https://img.shields.io/github/license/BlackTafita/angular-video-player?style=flat-square)](https://shields.io/)
-[![Generic badge](https://img.shields.io/npm/v/ng-video-player)](https://shields.io/)
-[![Generic badge](https://img.shields.io/npm/dw/ng-video-player)](https://shields.io/)
+[![Generic badge](https://img.shields.io/github/license/BlackTafita/angular-video-player?style=flat-square)](https://www.npmjs.com/package/ng-video-player)
+[![Generic badge](https://img.shields.io/npm/v/ng-video-player)](https://www.npmjs.com/package/ng-video-player)
+[![Generic badge](https://img.shields.io/npm/dw/ng-video-player)](https://www.npmjs.com/package/ng-video-player)
 
 The HTML5 Video wrapper for Angular.
 Right now is a simple package which give ability play video.
