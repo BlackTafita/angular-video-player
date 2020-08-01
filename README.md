@@ -5,6 +5,8 @@
 
 The HTML5 Video wrapper for Angular.
 Right now is a simple package which give ability play video.
+## Install
+``` npm i ng-video-player ```
 ## How it use
 Add `NgVideoPlayerModule` to your module where you want to use video player component.
 
