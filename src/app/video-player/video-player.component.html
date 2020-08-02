@@ -1,7 +1,7 @@
 <div class="player">
   <div class="player-media">
     <video #video  (click)="videoElem.paused ? videoElem.play() : videoElem.pause()">
-      <source [src]="videoSrc">
+      <source *ngFor="let path of videoPaths" [src]="path" [type]="getVideoType(path)">
     </video>
   </div>
   <div class="player-toolbar" *ngIf="showToolbar">
