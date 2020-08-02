@@ -44,10 +44,5 @@ describe('VideoPlayerComponent', () => {
     it('should be paused by default', () => {
        expect(component.videoElem.paused).toBeTruthy();
     });
-
-    // it('should be played', () => {
-    //   component.videoElem.autoplay = true;
-    //   expect(component.videoElem.paused).toBeFalsy();
-    // });
   });
 });
