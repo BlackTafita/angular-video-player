@@ -19,8 +19,13 @@ yarn add ng-video-player
 ## How it use
 Include `NgVideoPlayerModule` to your module where you want to use video player component.
 
-Use `<ng-video-player [videoSrc]='path to video file'
-[showToolbar]='true/false'></ng-video-player>`.
+Use this code in the component:
+```
+<ng-video-player 
+  [videoSrc]='path to video file'
+  [showToolbar]='true/false'
+></ng-video-player>
+```
 
 ## Help
 If you got some problems or ideas. Please create issue on [GitHub](https://github.com/BlackTafita/angular-video-player)

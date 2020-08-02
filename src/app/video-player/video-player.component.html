@@ -1,6 +1,6 @@
 <div class="player">
   <div class="player-media">
-    <video #video  (click)="toggle()">
+    <video #video  (click)="videoElem.paused ? videoElem.play() : videoElem.pause()">
       <source [src]="videoSrc">
     </video>
   </div>
@@ -13,7 +13,7 @@
     <div class="buttons-line">
       <div class="side left-side">
         <div class="btn btn-play" *ngIf="video.paused"
-             (click)="play()">
+             (click)="videoElem.play()">
           <svg version="1.1" id="Слой_1"  x="0px" y="0px"
 	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
             <g>
@@ -22,7 +22,7 @@
           </svg>
         </div>
         <div class="btn btn-pause" *ngIf="!video.paused"
-             (click)="pause()">
+             (click)="videoElem.pause()">
           <svg version="1.1" id="Слой_1" x="0px" y="0px"
 	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
             <g>
