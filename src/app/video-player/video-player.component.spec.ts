@@ -44,6 +44,11 @@ describe('VideoPlayerComponent', () => {
       expect(component.videoElem.paused).toBeTruthy();
     });
 
+    it('should be reset video', () => {
+      component.stop();
+      expect(component.videoElem.paused).toBeTruthy();
+    });
+
     it('should return correct values', () => {
       expect(component.getVideoType('/assets/video/test.mp4')).toBe('video/mp4');
       expect(component.getVideoType('/assets/video/test.mov')).toBe('video/mov');
