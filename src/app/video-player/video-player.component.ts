@@ -9,9 +9,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./video-player.component.scss']
 })
 export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
-
   @Input()
-  videoSrc: string;
+  set videoSrc(values: string | string[]) {
+    this.videoPaths = (Array.isArray(values)) ? values : [values];
+  }
 
   @Input()
   showToolbar = true;
@@ -20,6 +21,7 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('timeline', {static: false}) timelineEl: ElementRef;
 
   title: string;
+  videoPaths: string[];
 
   videoDuration$: Observable<number>;
   currentTime$: Observable<number>;
@@ -36,7 +38,7 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.videoElem.load();
-    this.title = this.videoSrc.match(/^.*\/(.*)\./)[1];
+    this.title = this.videoPaths[0].match(/^.*\/(.*)\./)[1];
     this.initVideoStreams();
   }
 
@@ -97,6 +99,11 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
     );
 
     this.volumeChangeSub$ = this.volumeControl.valueChanges.subscribe((res) => this.videoElem.volume = res / 100);
+  }
+
+  getVideoType(path: string): string {
+    const val = path.match(/\.(.*)$/)[1];
+    return 'video/' + val;
   }
 
 }

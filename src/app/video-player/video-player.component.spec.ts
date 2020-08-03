@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoPlayerComponent } from './video-player.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 describe('VideoPlayerComponent', () => {
   let component: VideoPlayerComponent;
@@ -11,7 +10,7 @@ describe('VideoPlayerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
-      declarations: [ VideoPlayerComponent ]
+      declarations: [VideoPlayerComponent]
     })
     .compileComponents();
   }));
@@ -42,7 +41,13 @@ describe('VideoPlayerComponent', () => {
 
   describe('Play/Pause Tests', () => {
     it('should be paused by default', () => {
-       expect(component.videoElem.paused).toBeTruthy();
+      expect(component.videoElem.paused).toBeTruthy();
+    });
+
+    it('should return correct values', () => {
+      expect(component.getVideoType('/assets/video/test.mp4')).toBe('video/mp4');
+      expect(component.getVideoType('/assets/video/test.mov')).toBe('video/mov');
+      expect(component.getVideoType('/assets/video/test.mkv')).toBe('video/mkv');
     });
   });
 });
